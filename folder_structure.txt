@@ -1,0 +1,34 @@
+Folder PATH listing
+Volume serial number is 8C97-EB6A
+D:.
+¦   folder_structure.txt
+¦   Project_report.pdf
+¦   README.md
+¦   requirements.txt
+¦   test_model.py
+¦   
++---app
+¦   ¦   app.py
+¦   ¦   
+¦   +---templates
+¦           index.html
+¦           
++---data
+¦       dataset.xlsx
+¦       preprocessed_data.csv
+¦       
++---models
+¦       final_model.pkl
+¦       train_model.py
+¦       
++---notebooks
+¦       exploratory_analysis.ipynb
+¦       model_training.ipynb
+¦       
++---reports
+¦       docassist_project_report.pdf
+¦       model_performance.txt
+¦       
++---utils
+        preprocess.py
+        

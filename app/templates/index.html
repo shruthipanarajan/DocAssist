@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocAssist - Medical Decision Support</title>
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);  /* Choose your preferred gradient */
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+       }
+
+
+        .container {
+            background: #ffffff;
+            max-width: 500px;
+            margin: auto;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            background: -webkit-linear-gradient(left, #ff416c, #ff4b2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+
+        /* Form Styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            color: #333;
+        }
+
+        input, select {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ff4b2b;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #ff4b2b;
+            color: white;
+            padding: 14px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #c5371b;
+            transform: scale(1.05);
+        }
+
+        /* Result Box */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 8px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .result.success {
+            background-color: #28a745;
+        }
+
+        .result.warning {
+            background-color: #dc3545;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Medical Decision Support System</h1>
+
+        <form action="/" method="post">
+            <label for="HAEMATOCRIT">HAEMATOCRIT:</label>
+            <input type="text" name="HAEMATOCRIT" required>
+
+            <label for="HAEMOGLOBINS">HAEMOGLOBINS:</label>
+            <input type="text" name="HAEMOGLOBINS" required>
+
+            <label for="ERYTHROCYTE">ERYTHROCYTE:</label>
+            <input type="text" name="ERYTHROCYTE" required>
+
+            <label for="LEUCOCYTE">LEUCOCYTE:</label>
+            <input type="text" name="LEUCOCYTE" required>
+
+            <label for="THROMBOCYTE">THROMBOCYTE:</label>
+            <input type="text" name="THROMBOCYTE" required>
+
+            <label for="MCH">MCH:</label>
+            <input type="text" name="MCH" required>
+
+            <label for="MCHC">MCHC:</label>
+            <input type="text" name="MCHC" required>
+
+            <label for="MCV">MCV:</label>
+            <input type="text" name="MCV" required>
+
+            <label for="AGE">AGE:</label>
+            <input type="number" name="AGE" required>
+
+            <label for="SEX">SEX:</label>
+            <select name="SEX">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+
+            <button type="submit">Get Recommendation</button>
+        </form>
+
+        {% if treatment_recommendation %}
+            <div class="result {% if 'No treatment' in treatment_recommendation %}success{% else %}warning{% endif %}">
+                {{ treatment_recommendation }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
