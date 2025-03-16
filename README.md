@@ -50,7 +50,7 @@ Ensure your project has the following folder structure as metioned above
 
 ### Step 3: Install Dependencies
 
-Navigate to the project directory and install the required Python packages using:
+Navigate to the project directory and install the required Python packages using(This Step is Optional):
 
      pip install -r requirements.txt
 
