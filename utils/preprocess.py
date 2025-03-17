@@ -5,7 +5,7 @@ def preprocess_data(input_file, output_file):
 
     try:
         print("📂 Loading dataset...")
-        df = pd.read_excel(input_file)  # Use read_excel() for Excel files
+        df = pd.read_excel(input_file) 
         print("✅ Dataset loaded successfully.")
 
         # Checking for missing values
@@ -15,7 +15,7 @@ def preprocess_data(input_file, output_file):
 
         # Handling missing values
         print("\n🛠️ Handling missing values...")
-        for col in df.select_dtypes(include=['number']).columns:  # Only apply to numeric columns
+        for col in df.select_dtypes(include=['number']).columns:  
             df[col].fillna(df[col].mean(), inplace=True)
         print("✅ Missing values handled.")
 
@@ -33,6 +33,6 @@ def preprocess_data(input_file, output_file):
 
 # Run the function
 if __name__ == "__main__":
-    input_file = "../data/dataset.xlsx"  # Ensure this file exists
+    input_file = "../data/dataset.xlsx"  
     output_file = "../data/preprocessed_data.csv"
     preprocess_data(input_file, output_file)
