@@ -5,14 +5,13 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the trained model
-model = joblib.load("models/final_model.pkl")  # Ensure the correct model path
+model = joblib.load("models/final_model.pkl")  
 
 # Function to preprocess input data
 def preprocess_data(data):
     df = pd.DataFrame([data])
     df["SEX_M"] = df["SEX"].map({"M": 1, "F": 0})
-    df.drop(columns=["SEX"], inplace=True, errors="ignore")  # Drop old column if exists
-  # Ensure consistent encoding
+    df.drop(columns=["SEX"], inplace=True, errors="ignore")  
     return df
 
 @app.route("/", methods=["GET", "POST"])
@@ -37,10 +36,6 @@ def index():
         # Preprocess the data
         processed_data = preprocess_data(patient_data)
 
-        # Debugging: Print input data
-        print("\n📝 DEBUG: Input Data for Prediction:")
-        print(processed_data)
-
         # Get prediction probability
         probability = model.predict_proba(processed_data)[0][1]  # Probability of `1`
         print(f"🔍 DEBUG: Probability of Treatment Required: {probability:.2f}")
@@ -55,9 +50,6 @@ def index():
             treatment_recommendation_text = "⚠️ Treatment required. Please consult a doctor."
         else:
             treatment_recommendation_text = "✅ No treatment required. Stay healthy!"
-
-    # Debugging: Print the final output being sent to the UI
-    print(f"🖥️ DEBUG: Sending to UI → {treatment_recommendation_text}")
 
     return render_template("index.html", treatment_recommendation=treatment_recommendation_text)
 
